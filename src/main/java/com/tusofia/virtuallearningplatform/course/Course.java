@@ -1,9 +1,11 @@
 package com.tusofia.virtuallearningplatform.course;
 
 import com.sun.istack.NotNull;
+import com.tusofia.virtuallearningplatform.lecture.Lecture;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -31,5 +33,8 @@ public class Course {
 
     @NotNull
     private String language;
+
+    @OneToMany(mappedBy = "course")
+    private List<Lecture> lectures;
 
 }

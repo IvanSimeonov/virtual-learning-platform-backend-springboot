@@ -75,7 +75,7 @@ public class CourseServiceImpl implements CourseService {
             return null;
         }
 
-        courseRepository.deleteById(id);
+        this.courseRepository.deleteById(id);
         return this.courseMapper.map(course, CourseDTO.class);
     }
 }

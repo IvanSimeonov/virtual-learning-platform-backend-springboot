@@ -1,9 +1,12 @@
 package com.tusofia.virtuallearningplatform.course;
 
+import com.tusofia.virtuallearningplatform.lecture.LectureDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,4 +19,5 @@ public class CourseDTO {
     private String fullDescription;
     private String requirements;
     private String language;
+    private List<LectureDTO> lectures;
 }

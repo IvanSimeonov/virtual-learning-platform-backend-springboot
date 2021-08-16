@@ -39,7 +39,7 @@ public class CourseController {
 
     @ApiOperation(value = "Retrieves all courses")
     @GetMapping("/courses")
-    public List<CourseDTO> getAllCourses() {
+    public List<CourseDTO> findAllCourses() {
         return this.courseService.findAllCourses();
     }
 
@@ -49,7 +49,7 @@ public class CourseController {
         return this.courseService.editCourse(courseDTO);
     }
 
-    @ApiOperation(value = "Deletes an existing course")
+    @ApiOperation(value = "Deletes an existing course by id")
     @DeleteMapping("/course/delete/{id}")
     public CourseDTO deleteCourseById(@PathVariable Long id) {
         return this.courseService.deleteCourseById(id);
