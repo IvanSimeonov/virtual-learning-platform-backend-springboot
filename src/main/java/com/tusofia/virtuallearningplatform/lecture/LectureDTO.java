@@ -13,5 +13,5 @@ public class LectureDTO {
     private Long id;
     private String title;
     private String description;
-    private Long course_id;
+    private Long courseId;
 }

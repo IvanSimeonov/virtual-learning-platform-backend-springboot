@@ -20,4 +20,5 @@ public class CourseDTO {
     private String requirements;
     private String language;
     private List<LectureDTO> lectures;
+    private Long categoryId;
 }

@@ -1,6 +1,6 @@
 package com.tusofia.virtuallearningplatform.lecture;
 
-import com.sun.istack.NotNull;
+import org.springframework.lang.NonNull;
 import com.tusofia.virtuallearningplatform.course.Course;
 import lombok.*;
 
@@ -16,12 +16,13 @@ public class Lecture {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "lecture_id")
     private Long id;
 
-    @NotNull
+    @NonNull
     private String title;
 
-    @NotNull
+    @NonNull
     private String description;
 
     @ManyToOne

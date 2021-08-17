@@ -2,7 +2,6 @@ package com.tusofia.virtuallearningplatform.lecture;
 
 import com.tusofia.virtuallearningplatform.course.Course;
 import com.tusofia.virtuallearningplatform.course.CourseDTO;
-import com.tusofia.virtuallearningplatform.course.CourseRepository;
 import com.tusofia.virtuallearningplatform.course.CourseService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +14,13 @@ import java.util.stream.Collectors;
 public class LectureServiceImpl implements LectureService {
 
     private final LectureRepository lectureRepository;
-    private final CourseRepository courseRepository;
     private final CourseService courseService;
     private final ModelMapper lectureMapper = new ModelMapper();
     private final ModelMapper courseMapper = new ModelMapper();
 
     @Autowired
-    public LectureServiceImpl(LectureRepository lectureRepository, CourseRepository courseRepository, CourseService courseService) {
+    public LectureServiceImpl(LectureRepository lectureRepository, CourseService courseService) {
         this.lectureRepository = lectureRepository;
-        this.courseRepository = courseRepository;
         this.courseService = courseService;
     }
 
@@ -32,9 +29,9 @@ public class LectureServiceImpl implements LectureService {
         Lecture lecture = new Lecture();
         lecture.setTitle(lectureDTO.getTitle());
         lecture.setDescription(lectureDTO.getDescription());
-        lecture.setCourse(this.courseMapper.map(this.courseRepository.getById(lectureDTO.getCourse_id()), Course.class));
-        LectureDTO lectureDTO1 = this.lectureMapper.map(this.lectureRepository.save(lecture),LectureDTO.class);
-        lectureDTO1.setCourse_id(lecture.getCourse().getId());
+        lecture.setCourse(this.courseMapper.map(this.courseService.findCourseById(lectureDTO.getCourseId()), Course.class));
+        LectureDTO lectureDTO1 = this.lectureMapper.map(this.lectureRepository.save(lecture), LectureDTO.class);
+        lectureDTO1.setCourseId(lecture.getCourse().getId());
         return lectureDTO1;
     }
 
